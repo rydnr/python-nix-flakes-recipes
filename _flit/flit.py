@@ -8,8 +8,7 @@ class Flit(BaseFlakeRecipe):
     """
     def __init__(self, flake: Flake):
         """Creates a new flit flake recipe instance"""
-        super().__init__(id)
-        self._flake = flake
+        super().__init__(flake)
 
     @classmethod
     def matches(cls, flake):

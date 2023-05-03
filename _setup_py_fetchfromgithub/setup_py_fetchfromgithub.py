@@ -8,8 +8,7 @@ class SetuppyFetchfromgithub(BaseFlakeRecipe):
     """
     def __init__(self, flake: Flake):
         """Creates a new setup.py+fetchFromGitHub flake recipe instance"""
-        super().__init__(id)
-        self._flake = flake
+        super().__init__(flake)
 
     def usesGitrepoSha256(self):
         return True

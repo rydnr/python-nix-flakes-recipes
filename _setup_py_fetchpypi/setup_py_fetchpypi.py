@@ -8,8 +8,7 @@ class SetuppyFetchPypi(BaseFlakeRecipe):
     """
     def __init__(self, flake: Flake):
         """Creates a new setup.py+fetchPypi flake recipe instance"""
-        super().__init__(id)
-        self._flake = flake
+        super().__init__(flake)
 
     def usesPipSha256(self):
         return True

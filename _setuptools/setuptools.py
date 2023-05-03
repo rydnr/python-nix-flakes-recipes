@@ -8,5 +8,4 @@ class Setuptools(BaseFlakeRecipe):
     """
     def __init__(self, flake: Flake):
         """Creates a new setuptools flake recipe instance"""
-        super().__init__(id)
-        self._flake = flake
+        super().__init__(flake)

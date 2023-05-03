@@ -8,10 +8,8 @@ class Poetry(BaseFlakeRecipe):
     """
     def __init__(self, flake: Flake):
         """Creates a new Poetry flake recipe instance"""
-        super().__init__(id)
-        self._flake = flake
+        super().__init__(flake)
 
     @classmethod
     def matches(cls, flake):
-        print(f'flake type? {flake.python_package.get_package_type()}')
         return flake.python_package.get_package_type() == "poetry"
