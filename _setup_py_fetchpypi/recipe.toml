@@ -2,4 +2,4 @@
 * = "*"
 
 [flake.metadata]
-type = "setup.py"
+type = "setup.py+fetchPypi"
