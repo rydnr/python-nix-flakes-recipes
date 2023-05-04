@@ -18,9 +18,8 @@
       in rec {{
         packages = {{
           {package_name}-{package_version_with_underscores} = (import ./{package_name}-{package_version}.nix) {{
-            inherit (pythonPackages) buildPythonPackage fetchPypi;
-            inherit (pkgs) lib setuptools;
-            {dependencies_with_newlines}
+            inherit (pythonPackages) buildPythonPackage {dependencies_with_blanks};
+            inherit (pkgs) fetchFromGitHub lib setuptools;
           }};
           {package_name} = packages.{package_name}-{package_version_with_underscores};
           default = packages.{package_name};
