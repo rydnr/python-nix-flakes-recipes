@@ -4,7 +4,7 @@
 
   inputs = {{
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
-    flake-utils.url = "github:numtide/flake-utils";{recipe.flakes_declaration().with_initial_prefix(backslash).with_indentation("    ").with_separator(backslash)}
+    flake-utils.url = "github:numtide/flake-utils";{recipe.flakes_declaration().with_initial_prefix(newline).with_indentation("    ").with_separator(newline)}
   }};
 
   outputs = inputs:
@@ -17,17 +17,17 @@
       in rec {{
         packages = {{
           {flake.name}-{flake.version.replace(".", "_")} = (import ./{flake.name}-{flake.version}.nix) {{
-            inherit (pythonPackages) buildPythonPackage{recipe.nixpkgs_as_parameter_to_package_nix().with_initial_prefix(" ").with_indentation(" ")};
-            inherit (pkgs) fetchFromGitHub lib setuptools;{recipe.flakes_as_parameter_to_package_nix().with_initial_prefix(f"{backslash}            ").with_indentation("            ")}
+            inherit (pythonPackages) buildPythonPackage{recipe.nixpkgs_as_parameter_to_package_nix().with_initial_prefix(" ").with_separator(" ")};
+            inherit (pkgs) fetchFromGitHub lib setuptools;{recipe.flakes_as_parameter_to_package_nix().with_initial_prefix(f"{newline}            ").with_separator(newline).with_indentation(f"            ")}
           }};
           {flake.name} = packages.{flake.name}-{flake.version.replace(".", "_")};
           default = packages.{flake.name};
           meta = with lib; {{
             description = ''
-{flake.description}
+{flake.description()}
 '';
-            license = licenses.{flake.license};
-            homepage = "{flake.repo_url}";
+            license = licenses.{flake.license()};
+            homepage = "{flake.repo_url()}";
             maintainers = with maintainers; [ ];
           }};
         }};
