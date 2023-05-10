@@ -1,5 +1,5 @@
-# Generated at {timestamp} by the package.nix.tmpl template in the setup.py+fetchfromgithub+monorepo recipe for [https://github.com/rydnr/python-nix-flake-generator]. Changes will be overwritten.
-{{ buildPythonPackage, fetchFromGitHub, lib{recipe.declaration().with_initial_prefix(", ").with_separator(", ")} }}:
+# Generated on {timestamp} by the package.nix.tmpl template in the setup.py+fetchfromgithub+monorepo recipe for [https://github.com/rydnr/python-nix-flake-generator]. Changes will be overwritten.
+{{ buildPythonPackage, fetchFromGitHub, lib, setuptools{recipe.declaration().with_initial_prefix(", ").with_separator(", ")} }}:
 buildPythonPackage rec {{
   pname = "{flake.name}";
   version = "{flake.version}";
