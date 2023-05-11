@@ -1,4 +1,4 @@
-# Generated on {timestamp} by the flake.nix.tmpl template in the setup.py+fetchfromgithub+monorepo recipe for [https://github.com/rydnr/python-nix-flake-generator]. Changes will be overwritten.
+# Generated on {timestamp} by the flake.nix.tmpl template in the setup.py+fetchgit+monorepo recipe for [https://github.com/rydnr/python-nix-flake-generator]. Changes will be overwritten.
 {{
   description = "A Nix flake for {flake.name}-{flake.version} Python package";
 
@@ -18,7 +18,7 @@
         packages = {{
           {flake.name}-{flake.version.replace(".", "_")} = (import ./{flake.name}-{flake.version}.nix) {{
             inherit (pythonPackages) buildPythonPackage{recipe.nixpkgs_as_parameter_to_package_nix().with_initial_prefix(" ").with_separator(" ")};
-            inherit (pkgs) fetchFromGitHub lib setuptools;{recipe.flakes_as_parameter_to_package_nix().with_initial_prefix(newline).with_separator(newline).with_indentation(f"            ")}
+            inherit (pkgs) fetchgit lib setuptools;{recipe.flakes_as_parameter_to_package_nix().with_initial_prefix(newline).with_separator(newline).with_indentation(f"            ")}
           }};
           {flake.name} = packages.{flake.name}-{flake.version.replace(".", "_")};
           default = packages.{flake.name};

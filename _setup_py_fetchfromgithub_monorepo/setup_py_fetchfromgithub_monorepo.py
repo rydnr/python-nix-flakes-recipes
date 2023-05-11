@@ -15,4 +15,4 @@ class SetuppyFetchfromgithubMonorepo(BaseFlakeRecipe):
 
     @classmethod
     def type_matches(cls, flake) -> bool:
-        return flake.python_package.get_type() == "setup.py" and not flake.python_package.package_in_pypi() and flake.python_package.git_repo.is_monorepo()
+        return flake.python_package.git_repo.in_github() and flake.python_package.get_type() == "setup.py" and not flake.python_package.package_in_pypi() and flake.python_package.git_repo.is_monorepo()
