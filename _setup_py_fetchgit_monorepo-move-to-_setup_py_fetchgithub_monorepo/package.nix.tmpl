@@ -1,0 +1,25 @@
+# Generated on {timestamp} by the package.nix.tmpl template in the setup.py+fetchfromgithub+monorepo recipe for [https://github.com/rydnr/python-nix-flake-generator]. Changes will be overwritten.
+{{ buildPythonPackage, fetchFromGitHub, lib, setuptools{recipe.declaration().with_initial_prefix(", ").with_separator(", ")} }}:
+buildPythonPackage rec {{
+  pname = "{flake.name}";
+  version = "{flake.version}";
+  format = "setuptools";
+
+  src = fetchFromGitHub {{
+    owner = "{flake.repo_owner()}";
+    repo = "{flake.repo_name()}";
+    rev = "{flake.repo_rev()}";
+    sha256 = "{recipe.repo_sha256()}";
+  }};
+  sourceRoot = "source/{flake.python_package.git_repo.subfolder}";
+{recipe.native_build_inputs_declaration().with_initial_prefix(f"{newline}  nativeBuildInputs = [{newline}").with_separator(newline).with_indentation("    ").with_final_suffix(f"{newline}  ];{newline}")}{recipe.propagated_build_inputs_declaration().with_initial_prefix(f"{newline}  propagatedBuildInputs = [{newline}").with_separator(newline).with_indentation("    ").with_final_suffix(f"{newline}  ];{newline}")}{recipe.build_inputs_declaration().with_initial_prefix(f"{newline}  buildInputs = [{newline}").with_separator(newline).with_indentation("    ").with_final_suffix(f"{newline}  ];{newline}")}{recipe.check_inputs_declaration().with_initial_prefix(f"{newline}  checkInputs = [{newline}").with_separator(newline).with_indentation("    ").with_final_suffix(f"{newline}  ];{newline}")}
+  meta = with lib; {{
+    description = ''
+{flake.description()}
+'';
+    license = licenses.{flake.license()};
+    homepage = "{flake.repo_url()}";
+    maintainers = with maintainers; [ ];
+    platforms = platforms.all;
+  }};
+}}
