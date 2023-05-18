@@ -1,5 +1,5 @@
-from domain.flake import Flake
-from domain.recipe.base_flake_recipe import BaseFlakeRecipe
+from domain.flake.flake import Flake
+from domain.flake.recipe.base_flake_recipe import BaseFlakeRecipe
 
 class SetuppyFetchPypi(BaseFlakeRecipe):
 
